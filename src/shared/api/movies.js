@@ -36,3 +36,21 @@ export const searchMovie = async query => {
   });
   return data;
 };
+
+export const getMovieDetailsByIdCredits = async id => {
+  const { data } = await instance.get(`/movie/${id}/credits`, {
+    params: {
+      api_key: APIKEY,
+    },
+  });
+  return data;
+};
+
+export const getMovieDetailsByIdReviews = async id => {
+  const { data } = await instance.get(`/movie/${id}/reviews`, {
+    params: {
+      api_key: APIKEY,
+    },
+  });
+  return data;
+};

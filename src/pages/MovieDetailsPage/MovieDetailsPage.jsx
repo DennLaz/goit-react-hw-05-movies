@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import {Link, Outlet} from 'react-router-dom'
 
 import { getMovieDetailsById } from '../../shared/api/movies';
 import MovieDetails from 'module/MovieDetails';
@@ -51,6 +52,13 @@ const MovieDetailsPage = () => {
       {error && <p>Movie not found</p>}
       {isMovie && <button onClick={goBack}>Go Back</button>}
       {isMovie && <MovieDetails {...movie} />}
+      <div> 
+        <h4>Additional information</h4>
+        {isMovie && <Link to={`cast`}>Cast</Link>}
+        {isMovie && <Link to={`reviews`}>Reviews</Link>}
+        <Outlet />
+      </div>
+
     </div>
   );
 };

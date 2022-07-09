@@ -20,7 +20,6 @@ const MovieDetails = ({ title, overview, genres, poster_path, release_date, vote
             <h4>Genres</h4>
             <p>{genre}</p>
             </li>
-            <p>Additionak information</p>
         </div>
     )
 }
