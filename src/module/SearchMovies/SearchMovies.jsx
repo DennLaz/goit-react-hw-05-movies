@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams} from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom';
 
 import SearchMovieForm from './SearchMovieForm';
 import MovieList from 'shared/components/MovieList';
 import { searchMovie } from '../../shared/api/movies';
 
-import styles from './searchMovies.module.css';
 
 const SearchMovies = () => {
   const [state, setState] = useState({
@@ -14,10 +13,10 @@ const SearchMovies = () => {
     error: null,
   });
 
-  const { items, loading, error } = state;
+  const { items } = state;
 
-    const [searchParams, setSearchParams] = useSearchParams();
-    const search = searchParams.get("query");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const search = searchParams.get('query');
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -28,7 +27,7 @@ const SearchMovies = () => {
       }));
 
       try {
-        const {results} = await searchMovie(search);
+        const { results } = await searchMovie(search);
         setState(prevState => ({
           ...prevState,
           loading: false,
@@ -47,7 +46,7 @@ const SearchMovies = () => {
     }
   }, [search]);
 
-  const changeSerch = ({ search }) => setSearchParams({query: search});
+  const changeSerch = ({ search }) => setSearchParams({ query: search });
 
   return (
     <div className="container">

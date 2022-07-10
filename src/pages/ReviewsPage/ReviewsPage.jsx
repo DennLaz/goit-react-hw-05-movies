@@ -1,4 +1,3 @@
-// import { items } from 'module/Header/items';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 

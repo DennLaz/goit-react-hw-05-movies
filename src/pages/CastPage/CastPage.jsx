@@ -11,8 +11,8 @@ const CastPage = () => {
     loading: false,
     error: null,
   });
-    
-    const {items} = state;
+
+  const { items } = state;
 
   const { id } = useParams();
 
@@ -24,7 +24,7 @@ const CastPage = () => {
         error: false,
       }));
       try {
-        const {cast} = await getMovieDetailsByIdCredits(id);
+        const { cast } = await getMovieDetailsByIdCredits(id);
         setState(prevState => ({
           ...prevState,
           items: cast,
@@ -37,24 +37,24 @@ const CastPage = () => {
           error,
         }));
       }
-      };
-      fetchReviews()
+    };
+    fetchReviews();
   }, [id]);
 
-  const elements = items.map(({ id, original_name, character, profile_path }) => {
-        const profilePhoto = `https://image.tmdb.org/t/p/w500${profile_path}`;
-        return (
-            <li key={id}>
-                <img src={profilePhoto} alt={original_name} />
-                <p>Name: {original_name}</p>
-                <p>Character: { character}</p>
-            </li>
-        )
-    })
+  const elements = items.map(
+    ({ id, original_name, character, profile_path }) => {
+      const profilePhoto = `https://image.tmdb.org/t/p/w500${profile_path}`;
+      return (
+        <li key={id}>
+          <img src={profilePhoto} alt={original_name} />
+          <p>Name: {original_name}</p>
+          <p>Character: {character}</p>
+        </li>
+      );
+    }
+  );
 
-    return <ul>
-      {elements}
-  </ul>;
+  return <ul>{elements}</ul>;
 };
 
 export default CastPage;

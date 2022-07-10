@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { useState } from 'react';
 
 import styles from './searchMovieForm.module.css';
@@ -22,9 +24,10 @@ const SearchMoviesForm = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={headleSubmit}>
-      <label>
+    <form className={styles.form} onSubmit={headleSubmit}>
+      <label className={styles.lable}>
         <input
+          className={styles.input}
           onChange={headleChange}
           type="text"
           name="search"
@@ -34,9 +37,17 @@ const SearchMoviesForm = ({ onSubmit }) => {
           placeholder="Serch movie"
         />
       </label>
-      <button type="submit">Search</button>
+      <button className={styles.button} type="submit">Search</button>
     </form>
   );
 };
+
+SearchMoviesForm.defaultProps = {
+  onSubmit: () => { }, 
+}
+
+SearchMoviesForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+}
 
 export default SearchMoviesForm;

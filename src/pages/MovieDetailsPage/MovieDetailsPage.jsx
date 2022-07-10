@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import {Link, Outlet} from 'react-router-dom'
+import {Link, Outlet, useLocation} from 'react-router-dom'
 
 import { getMovieDetailsById } from '../../shared/api/movies';
 import MovieDetails from 'module/MovieDetails';
@@ -16,6 +16,10 @@ const MovieDetailsPage = () => {
 
   const { id } = useParams();
   const navigate = useNavigate();
+
+  const location = useLocation();
+  const from = location.state?.from || '/'
+
   const { movie, loading, error } = state;
 
   useEffect(() => {
@@ -44,18 +48,18 @@ const MovieDetailsPage = () => {
   }, [id]);
 
     const isMovie = Object.keys(movie).length > 0;
-    const goBack = () => navigate(-1);
+    const goBack = () => navigate(from);
 
   return (
     <div className="container">
-      {loading && <p>...Loading</p>}
-      {error && <p>Movie not found</p>}
-      {isMovie && <button onClick={goBack}>Go Back</button>}
+      {loading && <p className={styles.text}>...Loading</p>}
+      {error && <p className={styles.text}>Movie not found</p>}
+      {isMovie && <button className={styles.button} onClick={goBack}>Go Back</button>}
       {isMovie && <MovieDetails {...movie} />}
       <div> 
         <h4>Additional information</h4>
-        {isMovie && <Link to={`cast`}>Cast</Link>}
-        {isMovie && <Link to={`reviews`}>Reviews</Link>}
+        {isMovie && <Link to={`cast`} state={{from}}>Cast</Link>}
+        {isMovie && <Link to={`reviews`} state={{from}}>Reviews</Link>}
         <Outlet />
       </div>
 

@@ -6,7 +6,7 @@ const HomePage = () => {
     return (
         <main>
             <div className='container'>
-                <h2>Trending today:</h2>
+                <h2 className={styles.text}>Trending today:</h2>
                 <Movies />
             </div>
         </main>

@@ -1,0 +1,10 @@
+.list {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+.item{
+    padding-top: 7px;
+}
+

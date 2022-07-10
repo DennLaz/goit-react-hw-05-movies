@@ -1,0 +1,26 @@
+.form {
+    padding: 15px 0;
+}
+
+.lable{
+    padding-right: 10px;
+}
+
+.button {
+    cursor: pointer;
+    border: none;
+    background-color: aquamarine;
+    padding: 10px;
+    color: red;
+    border-radius: 25px 0;
+}
+
+.input {
+
+    padding: 5px;
+    height: 20px;
+    width: 250px;
+   border: 1px solid red;
+   border-radius: 15px 0;
+    outline: none;
+}

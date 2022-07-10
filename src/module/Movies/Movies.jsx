@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { getTrending } from '../../shared/api/movies';
 import MovieList from 'shared/components/MovieList';
 
-import styles from './movies.module.css';
 
 const Movies = () => {
   const [state, setState] = useState({
@@ -41,11 +40,11 @@ const Movies = () => {
   }, []);
 
   return (
-    <div className="container">
-      {loading && <p>...Loading</p>}
+    <>
+     {loading && <p>...Loading</p>}
       {error && <p>Movie not found, try again</p>}
-      <MovieList items={items } />
-    </div>
+      <MovieList items={items} />
+    </>
   );
 };
 
