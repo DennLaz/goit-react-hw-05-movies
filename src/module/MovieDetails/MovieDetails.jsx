@@ -15,25 +15,26 @@ const MovieDetails = ({
   const voteAverageOnPercentage = vote_average * 10;
 
   return (
-    <div className="container">
+    <>
       <li className={styles.item}>
         <img
+          className={styles.img}
           src={`https://image.tmdb.org/t/p/w500${poster_path}`}
           alt={title}
         />
-        <div>
-          <h3>
+        <div className={styles.wrap}>
+          <h3 className={styles.text}>
             {title}
             <span> ({releaseDate})</span>
           </h3>
-          <p>User Score: {`${voteAverageOnPercentage}%`}</p>
-          <h4>Overview</h4>
-          <p>{overview}</p>
-          <h4>Genres</h4>
-          <p>{genre}</p>
+          <p className={styles.text}>User Score: {`${voteAverageOnPercentage}%`}</p>
+          <h4 className={styles.text}>Overview</h4>
+          <p className={styles.text}>{overview}</p>
+          <h4 className={styles.text}>Genres</h4>
+          <p className={styles.text}>{genre}</p>
         </div>
       </li>
-    </div>
+    </>
   );
 };
 

@@ -17,7 +17,7 @@ const Header = () => {
   ));
 
   return (
-    <nav>
+    <nav className={styles.nav}>
       <div className='container'>
         <ul className={styles.header}>{elements}</ul>
       </div>

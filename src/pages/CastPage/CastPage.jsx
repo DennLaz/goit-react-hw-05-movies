@@ -45,16 +45,16 @@ const CastPage = () => {
     ({ id, original_name, character, profile_path }) => {
       const profilePhoto = `https://image.tmdb.org/t/p/w500${profile_path}`;
       return (
-        <li key={id}>
-          <img src={profilePhoto} alt={original_name} />
-          <p>Name: {original_name}</p>
-          <p>Character: {character}</p>
+        <li className={styles.item} key={id}>
+          <img className={styles.img} src={profilePhoto} alt={original_name} />
+          <p className={styles.text}><span className={styles.el}>Name:</span> {original_name}</p>
+          <p className={styles.text}><span className={styles.el}>Character:</span> {character}</p>
         </li>
       );
     }
   );
 
-  return <ul>{elements}</ul>;
+  return <ul className={styles.list}>{elements}</ul>;
 };
 
 export default CastPage;

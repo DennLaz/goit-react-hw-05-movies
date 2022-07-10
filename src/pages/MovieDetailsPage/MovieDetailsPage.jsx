@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import {Link, Outlet, useLocation} from 'react-router-dom'
+import { Link, Outlet, useLocation } from 'react-router-dom';
 
 import { getMovieDetailsById } from '../../shared/api/movies';
 import MovieDetails from 'module/MovieDetails';
@@ -18,7 +18,7 @@ const MovieDetailsPage = () => {
   const navigate = useNavigate();
 
   const location = useLocation();
-  const from = location.state?.from || '/'
+  const from = location.state?.from || '/';
 
   const { movie, loading, error } = state;
 
@@ -47,23 +47,36 @@ const MovieDetailsPage = () => {
     fetchMovie();
   }, [id]);
 
-    const isMovie = Object.keys(movie).length > 0;
-    const goBack = () => navigate(from);
+  const isMovie = Object.keys(movie).length > 0;
+  const goBack = () => navigate(from);
 
   return (
-    <div className="container">
-      {loading && <p className={styles.text}>...Loading</p>}
-      {error && <p className={styles.text}>Movie not found</p>}
-      {isMovie && <button className={styles.button} onClick={goBack}>Go Back</button>}
-      {isMovie && <MovieDetails {...movie} />}
-      <div> 
-        <h4>Additional information</h4>
-        {isMovie && <Link to={`cast`} state={{from}}>Cast</Link>}
-        {isMovie && <Link to={`reviews`} state={{from}}>Reviews</Link>}
-        <Outlet />
+
+      <div className="container">
+        {loading && <p className={styles.text}>...Loading</p>}
+        {error && <p className={styles.text}>Movie not found</p>}
+        {isMovie && (
+          <button className={styles.button} onClick={goBack}>
+            Go Back
+          </button>
+        )}
+        {isMovie && <MovieDetails {...movie} />}
+        {isMovie && <h4 className={styles.info}>Additional information</h4>}
+        <div className={styles.wrap}>
+          {isMovie && (
+            <Link className={styles.link} to={`cast`} state={{ from }}>
+              Cast
+            </Link>
+          )}
+          {isMovie && (
+            <Link className={styles.link} to={`reviews`} state={{ from }}>
+              Reviews
+            </Link>
+          )}
+          <Outlet />
+        </div>
       </div>
 
-    </div>
   );
 };
 

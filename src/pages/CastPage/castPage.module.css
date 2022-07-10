@@ -1,0 +1,20 @@
+.list {
+    border-top: 1px solid grey;
+}
+
+.item{
+    padding-top: 15px;
+}
+
+.text{
+    padding-top: 10px;
+}
+
+.img{
+    width: 150px;
+    height: auto;
+}
+
+.el{
+    font-weight: 700;
+}

@@ -43,12 +43,15 @@ const ReviewsPage = () => {
 
   const elements = items.map(({ author, content, id }) => (
     <li key={id}>
-      <h5>Author: {author}</h5>
-      <p>{content}</p>
+      <h5 className={styles.el}>Author: {author}</h5>
+      <p className={styles.text}>{content}</p>
     </li>
   ));
 
-  return <ul>{elements}</ul>;
+  return(
+    <ul>
+      {elements.length > 0 ? elements : <p>We don`t have any reviews for this movie</p>}
+  </ul>);
 };
 
 export default ReviewsPage;
